@@ -1,0 +1,30 @@
+import React from 'react';
+{{#if wantMessages}}
+import { injectIntl, intlShape } from 'react-intl';
+import { {{ camelCase name }}Messages } from './messages';
+
+const {{ properCase name }}Intl = ({ intl }) => (
+  <span>{intl.formatMessage({{ camelCase name }}Messages.hello)}</span>
+);
+
+{{ properCase name }}Intl.propTypes = {
+  intl: intlShape.isRequired
+};
+
+{{#if wantLoadable}}
+export default injectIntl({{ properCase name }}Intl);
+{{else}}
+export const {{ properCase name }} = injectIntl({{ properCase name }}Intl);
+{{/if}}
+{{else}}
+
+const {{ properCase name }} = () => (
+  <span></span>
+);
+
+{{#if wantLoadable}}
+export default {{ properCase name }};
+{{else}}
+export { {{ properCase name }} };
+{{/if}}
+{{/if}}

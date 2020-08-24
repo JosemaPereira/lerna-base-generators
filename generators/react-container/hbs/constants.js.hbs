@@ -1,0 +1,14 @@
+// TODO: Refactor DEFAULT for your actual workflow name, for example:
+// "default" -> "handleAddTodo"
+// "DEFAULT" -> "HANDLE_ADD_TODO"
+export const DEFAULT_REDUCER = '{{ camelCase name }}/default';
+{{#if wantSaga}}
+export const DEFAULT_SAGA = '{{ camelCase name }}/defaultWorkflow';
+
+export const DEFAULT_SAGA_STARTED = '{{ camelCase name }}/defaultWorkflowStarted';
+
+export const DEFAULT_SAGA_ERROR = '{{ camelCase name }}/defaultWorkflowError';
+
+export const DEFAULT_SAGA_FINISHED = '{{ camelCase name }}/defaultWorkflowFinished';
+
+{{/if}}

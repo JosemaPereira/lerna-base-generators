@@ -1,0 +1,16 @@
+import produce from 'immer';
+import { handleActions } from 'redux-actions';
+import * as {{ camelCase name }}Constants from './constants';
+
+const initialState = { };
+
+const defaultHandler = (state, action) => state;
+
+export const {{ camelCase name }}Reducer = produce(
+  handleActions(
+    {
+      [{{ camelCase name }}Constants.DEFAULT_REDUCER]: defaultHandler
+    },
+    initialState
+  )
+);

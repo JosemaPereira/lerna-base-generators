@@ -1,15 +1,11 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
-packages/*/dist
 /dist
 /tmp
-packages/*/lib
-packages/*/out-tsc
 /out-tsc
 
 # dependencies
-packages/*/node_modules
 /node_modules
 
 # IDEs and editors
@@ -23,14 +19,16 @@ packages/*/node_modules
 
 # IDE - VSCode
 .vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 
 # misc
 /.sass-cache
 /connect.lock
-packages/*/coverage
 /coverage
 /libpeerconnection.log
-lerna-debug.log
 npm-debug.log
 yarn-error.log
 testem.log
@@ -39,5 +37,3 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-
-packages/react-spa-hotel-list/.env

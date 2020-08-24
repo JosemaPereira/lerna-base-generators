@@ -1,0 +1,36 @@
+import * as {{ camelCase name }}Constants from './constants';
+
+// Reducer
+export const defaultReducer = payload => ({
+  type: {{ camelCase name }}Constants.DEFAULT_REDUCER,
+  payload
+});
+
+export const {{ camelCase name }}ReducerActions = {
+  defaultReducer
+};
+{{#if wantSaga}}
+// Saga
+export const handleDefaultAction = payload => ({
+  type: {{ camelCase name }}Constants.DEFAULT_SAGA,
+  payload
+});
+
+export const handleDefaultActionStarted = () => ({
+  type: {{ camelCase name }}Constants.DEFAULT_SAGA_STARTED
+});
+
+export const handleDefaultActionError = payload => ({
+  type: {{ camelCase name }}Constants.DEFAULT_SAGA_ERROR,
+  payload
+});
+
+export const handleDefaultActionFinished = () => ({
+  type: {{ camelCase name }}Constants.DEFAULT_SAGA_FINISHED
+});
+
+export const {{ camelCase name }}BindActions = {
+  handleDefaultAction
+};
+
+{{/if}}

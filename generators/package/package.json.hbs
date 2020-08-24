@@ -1,0 +1,26 @@
+{
+  "name": "@sakura-pereira/{{contractPrefix}}{{kebabCase name}}",
+  "version": "1.0.0",
+  "description": "",
+  "author": {
+    "name": "Sakura Pereira"
+  },
+  "keywords": [],
+  "license": "UNLICENSED",
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+  "fesm5": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "directories": {
+    "lib": "lib"{{#unless  contractPrefix}},
+    "test": "tests"{{/unless}}
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "tslint": "tslint",
+    "tsc": "tsc"{{#unless  contractPrefix}},
+    "karma": "karma"{{/unless}}
+  }
+}

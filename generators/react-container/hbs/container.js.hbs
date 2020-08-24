@@ -1,0 +1,53 @@
+import { connect } from 'react-redux';
+import { {{#if wantActions}}bindActionCreators, {{/if}}compose } from 'redux';
+import { {{ properCase dumbComponentName }} } from '../../components/{{ properCase dumbComponentName }}';
+{{#if wantSaga}}
+import { injectSaga } from '../../utils/injectSaga';
+{{/if}}
+import { injectReducer } from '../../utils/injectReducer';
+{{#if wantActions}}
+{{#if wantSaga}}
+import { {{ camelCase name }}BindActions } from './actions';
+{{else}}
+import { {{ camelCase name }}ReducerActions } from './actions';
+{{/if}}
+{{/if}}
+import { {{ camelCase name }}Reducer } from './reducer';
+{{#if wantSaga}}
+import { {{ camelCase name }}Saga } from './saga';
+{{/if}}
+import * as {{ camelCase name }}Selectors from './selectors';
+
+const mapStateToProps = state => ({
+  {{ camelCase name }}: {{ camelCase name }}Selectors.{{ camelCase name }}Selector(state)
+});
+
+{{#if wantActions}}
+const mapDispatchToProps = dispatch => ({
+{{#if wantSaga}}
+  actions: bindActionCreators({{ camelCase name }}BindActions, dispatch)
+{{else}}
+  actions: bindActionCreators({{ camelCase name }}ReducerActions, dispatch)
+{{/if}}
+});
+{{/if}}
+
+{{#if wantActions}}
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
+{{else}}
+const withConnect = connect(mapStateToProps);
+{{/if}}
+
+const withReducer = injectReducer({ key: '{{ camelCase name }}', reducer: {{ camelCase name }}Reducer });
+
+{{#if wantSaga}}
+const withSaga = injectSaga({ key: '{{ camelCase name }}', saga: {{ camelCase name }}Saga });
+
+{{/if}}
+export const {{ properCase name }}Container = compose(
+  withReducer,
+  {{#if wantSaga}}
+  withSaga,
+  {{/if}}
+  withConnect
+)({{ properCase dumbComponentName }});

@@ -1,0 +1,23 @@
+import { put, takeLatest } from 'redux-saga/effects';
+import {
+  handleDefaultActionError,
+  handleDefaultActionFinished,
+  handleDefaultActionStarted
+} from './actions';
+import * as {{ camelCase name }}Constants from './constants';
+
+function* defaultActionHandler(action) {
+  yield put(handleDefaultActionStarted());
+
+  try {
+    // TODO: yield some workflow logic
+  } catch (err) {
+    yield put(handleDefaultActionError(err));
+  }
+
+  yield put(handleDefaultActionFinished());
+}
+
+export function* {{ camelCase name }}Saga() {
+  yield takeLatest({{ camelCase name }}Constants.DEFAULT_SAGA, defaultActionHandler);
+}

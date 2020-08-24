@@ -1,0 +1,37 @@
+{
+  "name": "root",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">10.x",
+    "yarn": ">0.15.0"
+  },
+  "scripts": {
+    "generate": "plop --plopfile ./generators/index.js",
+    "prebuild": "lerna run tslint -- -c ../../tslint.json src/**/*.ts",
+    "build": "yarn build:tsc && yarn build:lib && lerna run build",
+    "build:tsc": "lerna run tsc",
+    "build:lib": "lerna run build:lib",
+    "postinstall": "lerna bootstrap",
+    "prebuild:ci": "yarn install",
+    "build:ci": "yarn build:tsc && yarn build:lib && yarn test",
+    "postbuild:ci": "lerna version",
+    "test": "lerna run karma -- start --single-run"
+  },
+  "devDependencies": {
+    "@types/jasmine": "^3.5.11",
+    "jasmine": "^3.5.0",
+    "karma": "^5.1.0",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-coverage": "^2.0.2",
+    "karma-jasmine": "^3.3.1",
+    "karma-typescript": "^5.0.3",
+    "karma-typescript-es6-transform": "^5.0.3",
+    "lerna": "^3.22.1",
+    "plop": "^2.7.2",
+    "tslint": "^6.1.2",
+    "typescript": "^3.9.7"
+  }
+}
