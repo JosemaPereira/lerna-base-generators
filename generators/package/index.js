@@ -1,6 +1,7 @@
 'use strict';
 
 const packageExists = require('../utils/packageExists');
+const DEFAULT_ORGANIZATION= "Sakura Pereira";
 
 module.exports = {
   description: 'Add a typescript package',
@@ -24,12 +25,18 @@ module.exports = {
 
         return 'The name is required';
       }
+    },
+    {
+      type: 'input',
+      name: 'organization',
+      message: 'Organization Name. Default: ' + DEFAULT_ORGANIZATION,
     }
   ],
   actions: data => {
     let includeTesting = false;
 
     data.currentYear = new Date().getFullYear();
+    data.organization = data.organization || DEFAULT_ORGANIZATION;
 
     switch (data.type) {
       case 'Typescript contract':

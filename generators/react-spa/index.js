@@ -1,6 +1,7 @@
 'use strict';
 
 const packageExists = require('../utils/packageExists');
+const DEFAULT_ORGANIZATION= "Sakura Pereira";
 
 module.exports = {
   description: 'Add a react based Single Page Application package',
@@ -18,11 +19,16 @@ module.exports = {
 
         return 'The name is required';
       }
+    },
+    {
+      type: 'input',
+      name: 'organization',
+      message: 'Organization Name. Default: ' + DEFAULT_ORGANIZATION,
     }
   ],
   actions: data => {
     data.currentYear = new Date().getFullYear();
-
+    data.organization = data.organization || DEFAULT_ORGANIZATION;
     const actions = [
       {
         type: 'addMany',
